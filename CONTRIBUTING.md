@@ -1,12 +1,8 @@
-# civic-tech-hub
+# Contributing
 
 A static bilingual link directory. Projects own their code and release independently. Edit `index.html`; do not introduce a shared application runtime. Add projects with a public source URL, a working destination and a short accurate description. Keep Romanian and English text consistent.
 
-## Setup and verification
-
-Node 22 and Python 3.12: `npm ci`, then `npx --no-install playwright install chromium` once. Run `npm run check` for deterministic structure/local-link checks and `npm test` for desktop/mobile browser smoke checks. These need no credentials or live upstream projects. There is no production build step; npm installs only development test tools.
-
-Preview with `python3 -m http.server 8000 --bind 127.0.0.1 --directory .`. CI reports `verify`. External site availability is operational evidence, not a deterministic PR correctness gate.
+Install Node 22, Python 3.12 and the locked test dependencies with `npm ci`; install Chromium with `npx --no-install playwright install chromium`. Before a PR, run `npm run check` and `npm test`. Include desktop/mobile screenshots for visual changes and explain new project inclusion or changed URLs. No account or production deployment is needed for local verification.
 
 ## Contribution workflow
 
