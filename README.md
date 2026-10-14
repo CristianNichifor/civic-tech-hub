@@ -11,10 +11,10 @@ engines not to index it.
 ## Linked projects
 
 - [romania-reforms](https://github.com/CristianNichifor/romania-reforms)
-- [legislativ](https://github.com/CristianNichifor/legislativ)
-- [achizitii-deschise](https://github.com/CristianNichifor/achizitii-deschise)
+- [legislation-linter](https://github.com/CristianNichifor/legislation-linter)
+- [open-procurement](https://github.com/CristianNichifor/open-procurement)
 - [digital-romania-atlas](https://github.com/CristianNichifor/digital-romania-atlas)
-- [ro-intel-reform-dataflows](https://github.com/CristianNichifor/ro-intel-reform-dataflows)
+- [romania-intelligence-reform-dataflows](https://github.com/CristianNichifor/romania-intelligence-reform-dataflows)
 - [usr-digital-platform-wireframe](https://github.com/CristianNichifor/usr-digital-platform-wireframe)
 - [civic-ui](https://github.com/CristianNichifor/civic-ui)
 
