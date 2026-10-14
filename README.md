@@ -1,12 +1,14 @@
 # Civic Tech Hub
 
-Pure link directory to the Romanian civic-tech projects below. No shared code, no build
-step, no dependency on any of them — just a page of links. Each project ships and
-releases independently; this repo exists only to make them navigable from one place.
+**Archived.** This link directory is folded into the projects hub:
+https://projects.cristian-nichifor.com/
 
-Live: https://cristiannichifor.github.io/civic-tech-hub/
+The hub ([digital-public-administration-lab](https://github.com/CristianNichifor/digital-public-administration-lab))
+now carries the links this page held. The old
+`cristiannichifor.github.io/civic-tech-hub/` page redirects there and asks search
+engines not to index it.
 
-## Projects
+## Linked projects
 
 - [romania-reforms](https://github.com/CristianNichifor/romania-reforms)
 - [legislativ](https://github.com/CristianNichifor/legislativ)
@@ -16,7 +18,10 @@ Live: https://cristiannichifor.github.io/civic-tech-hub/
 - [usr-digital-platform-wireframe](https://github.com/CristianNichifor/usr-digital-platform-wireframe)
 - [civic-ui](https://github.com/CristianNichifor/civic-ui)
 
-## Adding a project
+## Checks
 
-Edit `index.html`, add one `<li class="card">` block following the existing pattern, commit.
-No build step to run.
+```sh
+npm ci
+npm run check   # redirect target, canonical link and noindex agree
+npm test        # browser: redirect and fallback link
+```
