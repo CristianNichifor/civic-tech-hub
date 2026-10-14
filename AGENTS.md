@@ -1,10 +1,10 @@
 # civic-tech-hub
 
-A static bilingual link directory. Projects own their code and release independently. Edit `index.html`; do not introduce a shared application runtime. Add projects with a public source URL, a working destination and a short accurate description. Keep Romanian and English text consistent.
+Archived: `index.html` is a redirect page to the projects hub at https://projects.cristian-nichifor.com/. Project links live in the hub (digital-public-administration-lab), not here. Keep the refresh target, canonical link, fallback link and `noindex` in agreement.
 
 ## Setup and verification
 
-Node 22 and Python 3.12: `npm ci`, then `npx --no-install playwright install chromium` once. Run `npm run check` for deterministic structure/local-link checks and `npm test` for desktop/mobile browser smoke checks. These need no credentials or live upstream projects. There is no production build step; npm installs only development test tools.
+Node 22 and Python 3.12: `npm ci`, then `npx --no-install playwright install chromium` once. Run `npm run check` for the static redirect checks and `npm test` for the browser redirect and fallback checks. These need no credentials or live upstream projects. There is no production build step; npm installs only development test tools.
 
 Preview with `python3 -m http.server 8000 --bind 127.0.0.1 --directory .`. CI reports `verify`. External site availability is operational evidence, not a deterministic PR correctness gate.
 
