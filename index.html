@@ -1,253 +1,32 @@
 <!doctype html>
-<html lang="en" data-lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Civic Tech Hub — Cristian Nichifor</title>
-<meta name="description" content="Directory of Romanian civic-tech projects: simulators, open data, and demos.">
+<meta http-equiv="refresh" content="0; url=https://projects.cristian-nichifor.com/">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://projects.cristian-nichifor.com/">
+<title>Civic Tech Hub has moved — Cristian Nichifor</title>
+<meta name="description" content="This directory is folded into the projects hub at projects.cristian-nichifor.com.">
 <style>
-  :root {
-    color-scheme: light dark;
-    --bg: #ffffff;
-    --fg: #1a1a1a;
-    --muted: #5a5a5a;
-    --border: #e2e2e2;
-    --accent: #1d4ed8;
-    --card-bg: #fafafa;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #121212;
-      --fg: #ededed;
-      --muted: #a0a0a0;
-      --border: #2a2a2a;
-      --accent: #7aa2ff;
-      --card-bg: #1a1a1a;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #121212; --fg: #ededed; --muted: #a0a0a0; --border: #2a2a2a; --accent: #7aa2ff; --card-bg: #1a1a1a;
-  }
-  :root[data-theme="light"] {
-    --bg: #ffffff; --fg: #1a1a1a; --muted: #5a5a5a; --border: #e2e2e2; --accent: #1d4ed8; --card-bg: #fafafa;
-  }
+  :root { color-scheme: light dark; --bg: #ffffff; --fg: #1a1a1a; --muted: #555555; --accent: #1d4ed8; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #111418; --fg: #e8e8e8; --muted: #a0a0a0; --accent: #8ab4ff; } }
   * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-  }
-  main {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 3rem 1.25rem 4rem;
-  }
-  header {
-    margin-bottom: 2.5rem;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  h1 {
-    font-size: 1.5rem;
-    margin: 0 0 0.4rem;
-  }
-  header p {
-    color: var(--muted);
-    margin: 0;
-    font-size: 0.95rem;
-  }
-  .lang-toggle {
-    flex-shrink: 0;
-    display: inline-flex;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .lang-toggle button {
-    font: inherit;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border: none;
-    background: transparent;
-    color: var(--muted);
-    padding: 0.4rem 0.7rem;
-    cursor: pointer;
-  }
-  .lang-toggle button[aria-pressed="true"] {
-    background: var(--accent);
-    color: #fff;
-  }
-  ul.list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  li.card {
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--card-bg);
-    padding: 1rem 1.1rem;
-  }
-  .card-title {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-  .card-title a {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--fg);
-    text-decoration: none;
-  }
-  .card-title a:hover { color: var(--accent); }
-  .card-links {
-    font-size: 0.85rem;
-    white-space: nowrap;
-  }
-  .card-links a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-  .card-links a:hover { text-decoration: underline; }
-  .card-desc {
-    margin: 0.35rem 0 0;
-    color: var(--muted);
-    font-size: 0.9rem;
-  }
-  [data-ro] { display: none; }
-  html[data-lang="ro"] [data-en] { display: none; }
-  html[data-lang="ro"] [data-ro] { display: inline; }
-  html[data-lang="ro"] p[data-ro] { display: block; }
-  footer {
-    margin-top: 3rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 0.85rem;
-  }
-  footer a { color: var(--accent); }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 1rem/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 40rem; margin: 0 auto; padding: 4rem 1rem; }
+  h1 { font-size: 1.75rem; margin: 0 0 1rem; }
+  p { margin: 0 0 1rem; }
+  .muted { color: var(--muted); }
+  a { color: var(--accent); overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <div>
-      <h1>Civic Tech Hub</h1>
-      <p data-en>Pure link directory. No shared code, no build step — just pointers to independent projects.</p>
-      <p data-ro>Director simplu de linkuri. Fără cod comun, fără build — doar trimiteri către proiecte independente.</p>
-    </div>
-    <div class="lang-toggle" role="group" aria-label="Language">
-      <button type="button" id="btn-en" aria-pressed="true">EN</button>
-      <button type="button" id="btn-ro" aria-pressed="false">RO</button>
-    </div>
-  </header>
-
-  <ul class="list">
-
-    <li class="card">
-      <div class="card-title">
-        <a href="https://cristiannichifor.github.io/romania-reforms/"><span data-en>Romania Reforms</span><span data-ro>Reforme România</span></a>
-        <span class="card-links"><a href="https://github.com/CristianNichifor/romania-reforms">repo</a></span>
-      </div>
-      <p class="card-desc" data-en>Simulators for Romanian public-policy reforms — deterministic, explainable, browser-only. Includes the pay (salarizare) and administrative-consolidation (administrativ) simulators.</p>
-      <p class="card-desc" data-ro>Simulatoare pentru reformele de politici publice din România — deterministe, explicabile, rulează integral în browser. Include simulatoarele de salarizare și de consolidare administrativă.</p>
-    </li>
-
-    <li class="card">
-      <div class="card-title">
-        <a href="https://cristiannichifor.github.io/legislativ/"><span data-en>Legislative Linter</span><span data-ro>Legislativ</span></a>
-        <span class="card-links"><a href="https://github.com/CristianNichifor/legislativ">repo</a></span>
-      </div>
-      <p class="card-desc" data-en>Linter for draft Romanian legislation: unfulfilled statutory deadlines, terminology drift, candidate contradictions — every finding carries its source article.</p>
-      <p class="card-desc" data-ro>Verificator pentru proiectele de legislație din România: termene legale neîndeplinite, derive terminologice, contradicții candidate — fiecare rezultat indică articolul sursă.</p>
-    </li>
-
-    <li class="card">
-      <div class="card-title">
-        <a href="https://cristiannichifor.github.io/achizitii-deschise/"><span data-en>Open Procurement</span><span data-ro>Achiziții Deschise</span></a>
-        <span class="card-links"><a href="https://github.com/CristianNichifor/achizitii-deschise">repo</a></span>
-      </div>
-      <p class="card-desc" data-en>Open data on Romanian public procurement — comparable unit prices, OCDS format. 26.6M direct-acquisition records, queryable in-browser via DuckDB-Wasm.</p>
-      <p class="card-desc" data-ro>Date deschise despre achizițiile publice din România — prețuri unitare comparabile, format OCDS. 26,6 milioane de achiziții directe, interogabile direct în browser prin DuckDB-Wasm.</p>
-    </li>
-
-    <li class="card">
-      <div class="card-title">
-        <a href="https://cristiannichifor.github.io/digital-romania-atlas/"><span data-en>Digital Romania Atlas</span><span data-ro>Atlas Digital România</span></a>
-        <span class="card-links"><a href="https://github.com/CristianNichifor/digital-romania-atlas">repo</a></span>
-      </div>
-      <p class="card-desc" data-en>Maps Romania's digital-identity ecosystem against a proposed EUDI Wallet "digital backbone" — institutions, data flows, feature comparison, timeline.</p>
-      <p class="card-desc" data-ro>Cartografiază ecosistemul de identitate digitală al României comparativ cu un „backbone digital” propus pe baza EUDI Wallet — instituții, fluxuri de date, comparație de funcționalități, cronologie.</p>
-    </li>
-
-    <li class="card">
-      <div class="card-title">
-        <a href="https://cristiannichifor.github.io/ro-intel-reform-dataflows/"><span data-en>RO Intel Reform · Data Flows</span><span data-ro>Reforma Informațiilor RO · Fluxuri de Date</span></a>
-        <span class="card-links"><a href="https://github.com/CristianNichifor/ro-intel-reform-dataflows">repo</a></span>
-      </div>
-      <p class="card-desc" data-en>Interactive demo of current vs. target-state information flows between Romania's intelligence, oversight, judicial and civilian institutions.</p>
-      <p class="card-desc" data-ro>Demonstrație interactivă a fluxurilor de informații actuale față de starea-țintă propusă, între instituțiile de informații, control, justiție și cele civile din România.</p>
-    </li>
-
-    <li class="card">
-      <div class="card-title">
-        <a href="https://cristiannichifor.github.io/usr-digital-platform-wireframe/#/"><span data-en>USR Digital Platform Wireframe</span><span data-ro>Machetă Platformă Digitală USR</span></a>
-        <span class="card-links"><a href="https://github.com/CristianNichifor/usr-digital-platform-wireframe">repo</a></span>
-      </div>
-      <p class="card-desc" data-en>Unofficial prototype for a rebuilt public site and member area — not an approved or connected service.</p>
-      <p class="card-desc" data-ro>Prototip neoficial pentru un site public și o zonă de membri regândite — nu este un serviciu aprobat sau conectat.</p>
-    </li>
-
-    <li class="card">
-      <div class="card-title">
-        <a href="https://github.com/CristianNichifor/civic-ui"><span data-en>Civic UI</span><span data-ro>UI Civic</span></a>
-        <span class="card-links"><a href="https://cristiannichifor.github.io/civic-ui/">docs</a></span>
-      </div>
-      <p class="card-desc" data-en>MIT-licensed React component library with opt-in themes, shared across the projects above.</p>
-      <p class="card-desc" data-ro>Bibliotecă de componente React licențiată MIT, cu teme opționale, folosită în comun de proiectele de mai sus.</p>
-    </li>
-
-  </ul>
-
-  <footer>
-    <p data-en>Maintained by <a href="https://github.com/CristianNichifor">Cristian Nichifor</a>. Each project ships and releases on its own — this page only links out.</p>
-    <p data-ro>Întreținut de <a href="https://github.com/CristianNichifor">Cristian Nichifor</a>. Fiecare proiect este dezvoltat și lansat independent — această pagină doar trimite către ele.</p>
-  </footer>
-</main>
-<script>
-  (function () {
-    var html = document.documentElement;
-    var btnEn = document.getElementById('btn-en');
-    var btnRo = document.getElementById('btn-ro');
-
-    function setLang(lang) {
-      html.setAttribute('data-lang', lang);
-      html.setAttribute('lang', lang);
-      btnEn.setAttribute('aria-pressed', String(lang === 'en'));
-      btnRo.setAttribute('aria-pressed', String(lang === 'ro'));
-      try { localStorage.setItem('civic-hub-lang', lang); } catch (e) {}
-    }
-
-    btnEn.addEventListener('click', function () { setLang('en'); });
-    btnRo.addEventListener('click', function () { setLang('ro'); });
-
-    var saved = null;
-    try { saved = localStorage.getItem('civic-hub-lang'); } catch (e) {}
-    if (saved === 'en' || saved === 'ro') {
-      setLang(saved);
-    } else if ((navigator.language || '').toLowerCase().indexOf('ro') === 0) {
-      setLang('ro');
-    }
-  })();
-</script>
+  <main>
+    <h1>Civic Tech Hub has moved</h1>
+    <p>This directory is folded into the projects hub:
+      <a href="https://projects.cristian-nichifor.com/">projects.cristian-nichifor.com</a>.</p>
+    <p class="muted" lang="ro">Acest director a fost mutat în hubul de proiecte:
+      <a href="https://projects.cristian-nichifor.com/">projects.cristian-nichifor.com</a>.</p>
+  </main>
 </body>
 </html>
