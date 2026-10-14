@@ -17,8 +17,12 @@ test('tells crawlers the hub is canonical and not to index this page', async ({ 
 
 for (const width of [390, 1280]) {
   test(`fallback link is usable at ${width}px`, async ({ page }) => {
-    // Hold the redirect so the page itself stays on screen.
-    await page.route(`${HUB}**`, () => new Promise(() => {}));
+    // Serve the page without its refresh, as a browser that ignores it would show it.
+    await page.route('**/', async route => {
+      const response = await route.fetch();
+      const body = (await response.text()).replace(/<meta http-equiv="refresh"[^>]*>/, '');
+      await route.fulfill({ response, body });
+    });
     await page.setViewportSize({ width, height: 900 });
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
