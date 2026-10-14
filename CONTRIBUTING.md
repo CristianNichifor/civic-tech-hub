@@ -1,6 +1,6 @@
 # Contributing
 
-A static bilingual link directory. Projects own their code and release independently. Edit `index.html`; do not introduce a shared application runtime. Add projects with a public source URL, a working destination and a short accurate description. Keep Romanian and English text consistent.
+Archived: `index.html` is a redirect page to the projects hub at https://projects.cristian-nichifor.com/. Add or change project links in the hub ([digital-public-administration-lab](https://github.com/CristianNichifor/digital-public-administration-lab)), not here. Only fixes to the redirect belong in this repository.
 
 Install Node 22, Python 3.12 and the locked test dependencies with `npm ci`; install Chromium with `npx --no-install playwright install chromium`. Before a PR, run `npm run check` and `npm test`. Include desktop/mobile screenshots for visual changes and explain new project inclusion or changed URLs. No account or production deployment is needed for local verification.
 

@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Validate local page structure and links without contacting external services."""
+"""Validate the redirect page to the projects hub without contacting external services."""
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import unquote, urlsplit
+import re
 import sys
+
+HUB = "https://projects.cristian-nichifor.com/"
+
 
 class Page(HTMLParser):
     def __init__(self):
@@ -14,11 +17,21 @@ class Page(HTMLParser):
         self.lang = False
         self.title = False
         self.heading = False
+        self.refresh = None
+        self.canonical = None
+        self.robots = None
+
     def handle_starttag(self, tag, pairs):
         attrs = dict(pairs)
         if tag == "html": self.lang = bool(attrs.get("lang"))
         if tag == "title": self.title = True
         if tag == "h1": self.heading = True
+        if tag == "meta" and (attrs.get("http-equiv") or "").lower() == "refresh":
+            self.refresh = attrs.get("content") or ""
+        if tag == "meta" and attrs.get("name") == "robots":
+            self.robots = attrs.get("content") or ""
+        if tag == "link" and attrs.get("rel") == "canonical":
+            self.canonical = attrs.get("href")
         if "id" in attrs:
             if attrs["id"] in self.ids: self.errors.append("duplicate id: " + attrs["id"])
             self.ids.add(attrs["id"])
@@ -26,24 +39,30 @@ class Page(HTMLParser):
             if not attrs.get("href"): self.errors.append("anchor without destination")
             else: self.links.append(attrs["href"])
 
-root = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
-page = root / "index.html"
-parser = Page()
-parser.feed(page.read_text())
-for value, message in [(parser.lang, "missing page language"), (parser.title, "missing title"), (parser.heading, "missing main heading"), (parser.links, "empty directory")]:
-    if not value: parser.errors.append(message)
-for href in parser.links:
-    url = urlsplit(href)
-    if url.scheme in ("https", "http"):
-        if not url.netloc: parser.errors.append("invalid external URL: " + href)
-    elif url.scheme == "mailto":
-        if "@" not in url.path: parser.errors.append("invalid contact URL: " + href)
-    elif url.scheme or url.netloc:
-        parser.errors.append("unexpected URL scheme: " + href)
-    else:
-        path = (root / unquote(url.path).lstrip("/")).resolve() if url.path else page
-        if not path.is_relative_to(root) or not path.exists(): parser.errors.append("missing local destination: " + href)
-        if path == page and url.fragment and unquote(url.fragment) not in parser.ids: parser.errors.append("missing fragment: " + href)
-if parser.errors:
-    sys.exit("\n".join(parser.errors))
-print(f"Validated {len(parser.links)} links and page landmarks in {page.name}")
+
+def check(root):
+    page = Path(root).resolve() / "index.html"
+    parser = Page()
+    parser.feed(page.read_text())
+    for value, message in [(parser.lang, "missing page language"), (parser.title, "missing title"), (parser.heading, "missing main heading")]:
+        if not value: parser.errors.append(message)
+    match = re.fullmatch(r"\s*0\s*;\s*url=(\S+)\s*", parser.refresh or "", re.IGNORECASE)
+    if not match or match.group(1) != HUB:
+        parser.errors.append("meta refresh must send visitors to " + HUB)
+    if parser.canonical != HUB:
+        parser.errors.append("canonical link must be " + HUB)
+    if "noindex" not in (parser.robots or "").replace(" ", "").split(","):
+        parser.errors.append("robots meta must include noindex")
+    if HUB not in parser.links:
+        parser.errors.append("visible link to " + HUB + " is missing")
+    for href in parser.links:
+        if not href.startswith("https://"):
+            parser.errors.append("unexpected link: " + href)
+    return parser.errors, len(parser.links), page.name
+
+
+if __name__ == "__main__":
+    errors, count, name = check(sys.argv[1] if len(sys.argv) > 1 else ".")
+    if errors:
+        sys.exit("\n".join(errors))
+    print(f"Validated redirect to {HUB} and {count} links in {name}")
